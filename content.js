@@ -26,19 +26,25 @@ function toggleAudioOnly() {
   const videoElement = document.querySelector('video');
   if (videoElement) {
     videoElement.pause(); // Stop the video
-    videoElement.removeAttribute('poster'); // Remove video poster to save resources
+    videoElement.removeAttribute('poster'); // Remove the video poster to save resources
     videoElement.setAttribute('muted', true); // Mute the video
+    // Ensures the video is paused, and only the audio is played
+    const audioTrack = new Audio(videoElement.src);
+    audioTrack.play();
+  } else {
+    alert('No video element found!');
   }
 }
 
 function downloadAudio() {
-  const audioURL = document.querySelector('video').src;
-  if (audioURL) {
+  const videoElement = document.querySelector('video');
+  if (videoElement) {
+    const audioURL = videoElement.src;
     chrome.downloads.download({
       url: audioURL,
-      filename: "audio-only.mp4"
+      filename: 'audio-only.mp4'
     });
   } else {
-    alert("Audio URL not found!");
+    alert('No audio URL found!');
   }
 }

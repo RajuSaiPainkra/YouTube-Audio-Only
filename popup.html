@@ -6,20 +6,36 @@
   <title>YouTube Audio Only</title>
   <style>
     body {
-      width: 200px;
-      height: 120px;
+      width: 300px;
+      height: 100px;
       padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    #buttons-container {
+      display: flex;
+      gap: 10px;
     }
     button {
-      width: 100%;
-      padding: 10px;
+      padding: 8px;
       font-size: 14px;
+      cursor: pointer;
+      background-color: #ff0000;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #cc0000;
     }
   </style>
 </head>
 <body>
-  <button id="audioToggle">Play Audio Only</button>
-  <button id="downloadAudio">Download Audio</button>
+  <div id="buttons-container">
+    <button id="audioToggle">Play Audio Only</button>
+    <button id="downloadAudio">Download Audio</button>
+  </div>
   <script src="popup.js"></script>
 </body>
 </html>
